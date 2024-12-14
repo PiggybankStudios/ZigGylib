@@ -1,0 +1,151 @@
+# Notes
+	[ ] "https://ziglang.org/"
+	[ ] "https://ziglang.org/documentation/0.13.0/"
+	[-] Zig Version: zig-windows-x86_64-0.14.0-dev.2424+7cd2c1ce8 downloaded Dec 9th 2024
+	[!] Zig Version: zig-windows-x86_64-0.13.0 downloaded Dec 14th 2024
+	[ ] To disable runtime safety in a block, call @setRuntimeSafety(false); (allows for integer overflow/underflow etc.)
+	[ ] Convert an integer to a pointer: @ptrFromInt(int_value);
+	[ ] Pointers are *T, optional pointers are ?*T
+	[ ] To unwrap an optional, you can use if or while like "if (optional) |value| { ... }". You can also use "orelse" keyword after something that returns an optional
+	[ ] Modulo operator is now @mod(value, divisor) not % character
+	[ ] To initialize a variable without clearing it to 0, you can use "= undefined" keyword
+	[ ] "defer" can be used to defer some line to be called when the scope exits
+	[?] "errdefer" can be used to defer some line to be called if the scope exits with an error return
+	[ ] The keyword "try" is a shortcut for "catch |err| return err;"
+	[ ] You can do "catch unreachable" to basically assert that no errors should occur
+	
+# Naming Conventions
+	[ ] Basic Types = u8, i32, f64, bool, etc.
+	[ ] Structs = UpperCamelCase = struct { ... }
+	[ ] Functions = camelCase(...)
+	[ ] Builtins = @camelCase(...) except the following: @FieldType, @This, @Type, @TypeOf, @Vector
+	[?] Globals = ?
+	[?] Constants = ?
+	[?] Variables = ?
+	[?] Struct Members = ?
+	[?] Enums = ?
+	[?] Test Names = "lowercase_with_underscores"
+
+# Useful Functions/Types in std
+	[ ] std.debug.captureStackTrace(...) std.builtin.StackTrace - can be used to capture the stack trace, and then printed later with std.debug.dumpStackTrace(trace)
+	[ ] std.debug.print(format, args)
+	[ ] std.debug.assert(condition)
+	[ ] std.testing.expect(condition)
+
+# Builtin Functions "https://ziglang.org/documentation/master/#Builtin-Functions"
+	[ ] @addrSpaceCast
+	[ ] @addWithOverflow
+	[ ] @alignCast
+	[ ] @alignOf
+	[ ] @as
+	[ ] @atomicLoad
+	[ ] @atomicRmw
+	[ ] @atomicStore
+	[ ] @bitCast
+	[ ] @bitOffsetOf
+	[ ] @bitSizeOf
+	[ ] @branchHint
+	[ ] @breakpoint
+	[ ] @mulAdd
+	[ ] @byteSwap
+	[ ] @bitReverse
+	[ ] @offsetOf
+	[ ] @call
+	[ ] @cDefine
+	[ ] @cImport
+	[ ] @cInclude
+	[ ] @clz
+	[ ] @cmpxchgStrong
+	[ ] @cmpxchgWeak
+	[ ] @compileError
+	[ ] @compileLog
+	[ ] @constCast
+	[ ] @ctz
+	[ ] @cUndef
+	[ ] @cVaArg
+	[ ] @cVaCopy
+	[ ] @cVaEnd
+	[ ] @cVaStart
+	[ ] @divExact
+	[ ] @divFloor
+	[ ] @divTrunc
+	[ ] @embedFile
+	[ ] @enumFromInt
+	[ ] @errorFromInt
+	[ ] @errorName
+	[ ] @errorReturnTrace
+	[ ] @errorCast
+	[ ] @export
+	[ ] @extern
+	[ ] @field
+	[ ] @fieldParentPtr
+	[ ] @FieldType
+	[ ] @floatCast
+	[ ] @floatFromInt
+	[ ] @frameAddress
+	[ ] @hasDecl
+	[ ] @hasField
+	[ ] @import
+	[ ] @inComptime
+	[ ] @intCast
+	[ ] @intFromBool
+	[ ] @intFromEnum
+	[ ] @intFromError
+	[ ] @intFromFloat
+	[ ] @intFromPtr
+	[ ] @max
+	[ ] @memcpy
+	[ ] @memset
+	[ ] @min
+	[ ] @wasmMemorySize
+	[ ] @wasmMemoryGrow
+	[ ] @mod
+	[ ] @mulWithOverflow
+	[ ] @panic
+	[ ] @popCount
+	[ ] @prefetch
+	[ ] @ptrCast
+	[ ] @ptrFromInt
+	[ ] @rem
+	[ ] @returnAddress
+	[ ] @select
+	[ ] @setEvalBranchQuota
+	[ ] @setFloatMode
+	[ ] @setRuntimeSafety
+	[ ] @shlExact
+	[ ] @shlWithOverflow
+	[ ] @shrExact
+	[ ] @shuffle
+	[ ] @sizeOf
+	[ ] @splat
+	[ ] @reduce
+	[ ] @src
+	[ ] @sqrt
+	[ ] @sin
+	[ ] @cos
+	[ ] @tan
+	[ ] @exp
+	[ ] @exp2
+	[ ] @log
+	[ ] @log2
+	[ ] @log10
+	[ ] @abs
+	[ ] @floor
+	[ ] @ceil
+	[ ] @trunc
+	[ ] @round
+	[ ] @subWithOverflow
+	[ ] @tagName
+	[ ] @This
+	[ ] @trap
+	[ ] @truncate
+	[ ] @Type
+	[ ] @typeInfo
+	[ ] @typeName
+	[ ] @TypeOf(...) type - A special builtin function that takes any (non-zero) number of expressions as parameters and returns the type of the result
+	[ ] @unionInit
+	[ ] @Vector
+	[ ] @volatileCast
+	[ ] @workGroupId
+	[ ] @workGroupSize
+	[ ] @workItemId
