@@ -25,13 +25,16 @@
 	[?] Variables = ?
 	[?] Struct Members = ?
 	[?] Enums = ?
-	[?] Test Names = "lowercase_with_underscores"
+	[?] Test Names = "lowercase_with_underscores" (we could allow spaces, but debug output includes module name and namespace with periods)
 
 # Useful Functions/Types in std
 	[ ] std.debug.captureStackTrace(...) std.builtin.StackTrace - can be used to capture the stack trace, and then printed later with std.debug.dumpStackTrace(trace)
 	[ ] std.debug.print(format, args)
 	[ ] std.debug.assert(condition)
 	[ ] std.testing.expect(condition)
+	[ ] std.fs.cwd() - Gets the current working directory of the program
+	[ ] std.fs.cwd().openFile(path, options) or std.fs.cwd().createFile(path, options)
+	[ ] 
 
 # Builtin Functions "https://ziglang.org/documentation/master/#Builtin-Functions"
 	[!] @addrSpaceCast
