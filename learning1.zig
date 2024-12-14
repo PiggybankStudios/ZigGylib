@@ -134,6 +134,76 @@ test "file_writing_and_catch_label"
 }
 
 // +--------------------------------------------------------------+
+// |                       types_are_values                       |
+// +--------------------------------------------------------------+
+fn List(comptime T: type) type
+{
+	return struct
+	{
+		items: []T,
+		length: i32,
+	};
+}
+
+test "types_are_values"
+{
+	const type1 = u8;
+	const type2 = u16;
+	assert(type1 != type2);
+	
+	var x: type1 = 8;
+	_ = &x;
+	assert(@TypeOf(x) == u8);
+	
+	var myListBuffer: [10]i32 = undefined;
+	var myList = List(i32) { .items = &myListBuffer, .length = 0 };
+	
+	myList.items[0] = 1234;
+	myList.length += 1;
+	// print("{}", .{myList});
+}
+
+// +--------------------------------------------------------------+
+// |                          type_info                           |
+// +--------------------------------------------------------------+
+fn printInfoAboutType(comptime T: type) void
+{
+	const info = @typeInfo(T);
+	print("{s}:\n{{\n", .{@typeName(T)});
+	inline for (info.Struct.fields) |field|
+	{
+		print("\t{s}: {s}\n", .{
+			field.name,
+			@typeName(field.type)
+		});
+	}
+	print("}}\n", .{});
+}
+
+test "type_info"
+{
+	print("\n", .{});
+	printInfoAboutType(List(i32));
+}
+
+// +--------------------------------------------------------------+
+// |                       comptime_keyword                       |
+// +--------------------------------------------------------------+
+fn fibonacci(x: u32) u32
+{
+	if (x <= 1) { return x; }
+	return fibonacci(x - 1) + fibonacci(x - 2);
+}
+
+test "comptime_keyword"
+{
+	var buffer: [fibonacci(6)]u8 = undefined;
+	@memset(&buffer, 42);
+	// print("buffer.len = {d} (aka fibonacci(6))...", .{buffer.len});
+	comptime { assert(buffer.len == 8); }
+}
+
+// +--------------------------------------------------------------+
 // |                             main                             |
 // +--------------------------------------------------------------+
 pub fn main() void

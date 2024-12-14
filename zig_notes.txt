@@ -13,6 +13,7 @@
 	[?] "errdefer" can be used to defer some line to be called if the scope exits with an error return
 	[ ] The keyword "try" is a shortcut for "catch |err| return err;"
 	[ ] You can do "catch unreachable" to basically assert that no errors should occur
+	[ ] Format strings use '{' and '}' characters so they need to be doubled up to actually output them in the result like "{{" and "}}"
 	
 # Naming Conventions
 	[ ] Basic Types = u8, i32, f64, bool, etc.
@@ -33,119 +34,119 @@
 	[ ] std.testing.expect(condition)
 
 # Builtin Functions "https://ziglang.org/documentation/master/#Builtin-Functions"
-	[ ] @addrSpaceCast
-	[ ] @addWithOverflow
-	[ ] @alignCast
-	[ ] @alignOf
-	[ ] @as
-	[ ] @atomicLoad
-	[ ] @atomicRmw
-	[ ] @atomicStore
-	[ ] @bitCast
-	[ ] @bitOffsetOf
-	[ ] @bitSizeOf
-	[ ] @branchHint
-	[ ] @breakpoint
-	[ ] @mulAdd
-	[ ] @byteSwap
-	[ ] @bitReverse
-	[ ] @offsetOf
-	[ ] @call
-	[ ] @cDefine
-	[ ] @cImport
-	[ ] @cInclude
-	[ ] @clz
-	[ ] @cmpxchgStrong
-	[ ] @cmpxchgWeak
-	[ ] @compileError
-	[ ] @compileLog
-	[ ] @constCast
-	[ ] @ctz
-	[ ] @cUndef
-	[ ] @cVaArg
-	[ ] @cVaCopy
-	[ ] @cVaEnd
-	[ ] @cVaStart
-	[ ] @divExact
-	[ ] @divFloor
-	[ ] @divTrunc
-	[ ] @embedFile
-	[ ] @enumFromInt
-	[ ] @errorFromInt
-	[ ] @errorName
-	[ ] @errorReturnTrace
-	[ ] @errorCast
-	[ ] @export
-	[ ] @extern
-	[ ] @field
-	[ ] @fieldParentPtr
-	[ ] @FieldType
-	[ ] @floatCast
-	[ ] @floatFromInt
-	[ ] @frameAddress
-	[ ] @hasDecl
-	[ ] @hasField
-	[ ] @import
-	[ ] @inComptime
-	[ ] @intCast
-	[ ] @intFromBool
-	[ ] @intFromEnum
-	[ ] @intFromError
-	[ ] @intFromFloat
-	[ ] @intFromPtr
-	[ ] @max
-	[ ] @memcpy
-	[ ] @memset
-	[ ] @min
-	[ ] @wasmMemorySize
-	[ ] @wasmMemoryGrow
-	[ ] @mod
-	[ ] @mulWithOverflow
-	[ ] @panic
-	[ ] @popCount
-	[ ] @prefetch
-	[ ] @ptrCast
-	[ ] @ptrFromInt
-	[ ] @rem
-	[ ] @returnAddress
-	[ ] @select
-	[ ] @setEvalBranchQuota
-	[ ] @setFloatMode
-	[ ] @setRuntimeSafety
-	[ ] @shlExact
-	[ ] @shlWithOverflow
-	[ ] @shrExact
-	[ ] @shuffle
-	[ ] @sizeOf
-	[ ] @splat
-	[ ] @reduce
-	[ ] @src
-	[ ] @sqrt
-	[ ] @sin
-	[ ] @cos
-	[ ] @tan
-	[ ] @exp
-	[ ] @exp2
-	[ ] @log
-	[ ] @log2
-	[ ] @log10
-	[ ] @abs
-	[ ] @floor
-	[ ] @ceil
-	[ ] @trunc
-	[ ] @round
-	[ ] @subWithOverflow
-	[ ] @tagName
-	[ ] @This
-	[ ] @trap
-	[ ] @truncate
-	[ ] @Type
-	[ ] @typeInfo
-	[ ] @typeName
-	[ ] @TypeOf(...) type - A special builtin function that takes any (non-zero) number of expressions as parameters and returns the type of the result
-	[ ] @unionInit
-	[ ] @Vector
-	[ ] @volatileCast
-	[ ] @workGroupId
-	[ ] @workGroupSize
-	[ ] @workItemId
+	[!] @addrSpaceCast
+	[!] @addWithOverflow
+	[!] @alignCast
+	[!] @alignOf
+	[!] @as
+	[!] @atomicLoad
+	[!] @atomicRmw
+	[!] @atomicStore
+	[!] @bitCast
+	[!] @bitOffsetOf
+	[!] @bitSizeOf
+	[!] @branchHint
+	[!] @breakpoint
+	[!] @mulAdd
+	[!] @byteSwap
+	[!] @bitReverse
+	[!] @offsetOf
+	[!] @call
+	[!] @cDefine
+	[!] @cImport
+	[!] @cInclude
+	[!] @clz
+	[!] @cmpxchgStrong
+	[!] @cmpxchgWeak
+	[!] @compileError
+	[!] @compileLog
+	[!] @constCast
+	[!] @ctz
+	[!] @cUndef
+	[!] @cVaArg
+	[!] @cVaCopy
+	[!] @cVaEnd
+	[!] @cVaStart
+	[!] @divExact
+	[!] @divFloor
+	[!] @divTrunc
+	[!] @embedFile
+	[!] @enumFromInt
+	[!] @errorFromInt
+	[!] @errorName
+	[!] @errorReturnTrace
+	[!] @errorCast
+	[!] @export
+	[!] @extern
+	[!] @field
+	[!] @fieldParentPtr
+	[!] @FieldType
+	[!] @floatCast
+	[!] @floatFromInt
+	[!] @frameAddress
+	[!] @hasDecl
+	[!] @hasField
+	[!] @import
+	[!] @inComptime
+	[!] @intCast
+	[!] @intFromBool
+	[!] @intFromEnum
+	[!] @intFromError
+	[!] @intFromFloat
+	[!] @intFromPtr
+	[!] @max
+	[!] @memcpy
+	[ ] @memset(slice, value) - Sets all values in the slice to a specified value
+	[!] @min
+	[!] @wasmMemorySize
+	[!] @wasmMemoryGrow
+	[!] @mod
+	[!] @mulWithOverflow
+	[!] @panic
+	[!] @popCount
+	[!] @prefetch
+	[!] @ptrCast
+	[ ] @ptrFromInt(integer) *T - Converts an integer into a pointer. Return type is inferred so must be known, or @as used to decide type
+	[!] @rem
+	[!] @returnAddress
+	[!] @select
+	[!] @setEvalBranchQuota
+	[!] @setFloatMode
+	[!] @setRuntimeSafety
+	[!] @shlExact
+	[!] @shlWithOverflow
+	[!] @shrExact
+	[!] @shuffle
+	[!] @sizeOf
+	[!] @splat
+	[!] @reduce
+	[!] @src
+	[!] @sqrt
+	[!] @sin
+	[!] @cos
+	[!] @tan
+	[!] @exp
+	[!] @exp2
+	[!] @log
+	[!] @log2
+	[!] @log10
+	[!] @abs
+	[!] @floor
+	[!] @ceil
+	[!] @trunc
+	[!] @round
+	[!] @subWithOverflow
+	[!] @tagName
+	[!] @This
+	[!] @trap
+	[!] @truncate
+	[!] @Type
+	[ ] @typeInfo(type) builtin.Type - Returns the type info for a type, which can allow reflection of it's members and other information
+	[ ] @typeName(type) *const [N:0]u8 - Returns the name of the type as a string
+	[ ] @TypeOf(variable...) type - A special builtin function that takes any (non-zero) number of expressions as parameters and returns the type of the result
+	[!] @unionInit
+	[!] @Vector
+	[!] @volatileCast
+	[!] @workGroupId
+	[!] @workGroupSize
+	[!] @workItemId
