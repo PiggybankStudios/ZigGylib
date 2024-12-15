@@ -2,3 +2,4 @@ build/*
 !build/build.bat
 !build/build.sh
 *.sublime-workspace
+.zig-cache/

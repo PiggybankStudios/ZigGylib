@@ -1,6 +1,9 @@
 # Notes
 	[ ] "https://ziglang.org/"
 	[ ] "https://ziglang.org/documentation/0.13.0/"
+	[ ] "https://ziglang.org/documentation/master/std/"
+	[ ] "https://ziglang.org/learn/build-system/"
+	[ ] "https://andrewkelley.me/"
 	[-] Zig Version: zig-windows-x86_64-0.14.0-dev.2424+7cd2c1ce8 downloaded Dec 9th 2024
 	[!] Zig Version: zig-windows-x86_64-0.13.0 downloaded Dec 14th 2024
 	[ ] To disable runtime safety in a block, call @setRuntimeSafety(false); (allows for integer overflow/underflow etc.)
