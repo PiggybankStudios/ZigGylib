@@ -13,11 +13,19 @@ pub fn build(b: *std.Build) void
 	b.lib_dir = "build";
 	// const lib = b.addSharedLibrary("mathtest", "mathtest.zig", b.version(1, 0, 0));
 	const exe = b.addExecutable(.{
-		.name = "learning1",
+		.name = "LearningApplication",
 		.root_source_file = b.path("learning1.zig"),
 		.target = b.host,
 		.optimize = .Debug, //.Debug, .ReleaseSafe, .ReleaseFast, .ReleaseSmall
 	});
+	
+	b.installArtifact(exe);
+	
+	// use "zig build run" to make this step execute
+	const runExe = b.addRunArtifact(exe);
+	const runStep = b.step("run", "Run the application");
+	runStep.dependOn(&runExe.step);
+	
 	// const exe_tests = b.addTest(.{
 	// 	.name = "learning1_test",
 	// 	.root_source_file = b.path("learning1.zig"),
@@ -25,21 +33,29 @@ pub fn build(b: *std.Build) void
 	// 	.optimize = .Debug, //.Debug, .ReleaseSafe, .ReleaseFast, .ReleaseSmall
 	// });
 	
+	// const testStep = b.step("test", "Run unit tests");
+	// const unitTests = b.addTest(.{
+	// 	.root_source_file=b.path("learning1.zig"),
+	// 	.target = b.host,
+	// });
+	// const runUnitTests = b.addRunArtifact(unitTests);
+	// testStep.dependOn(&runUnitTests.step);
+	
 	// exe.addSourceFile("learning1.zig", &[_][]const u8{"-std=c99"});
 	// exe.linkLibrary(lib);
 	// exe.linkSystemLibrary("c");
-	
-	// b.default_step.dependOn(&exe.step);
-	
 	// const run_cmd = exe.run();
 	// const test_step = b.step("test", "Test the program");
 	// test_step.dependOn(&run_cmd.step);
-	
-	b.installArtifact(exe);
+	// std.debug.print("{}\n", .{exeInstall});
 	// b.installArtifact(t);
 	// const test_step = b.step("test", "Run tests");
 	// test_step.dependOn(&exe_tests.step);
 	// b.installArtifact(test_step);
+	// b.default_step.dependOn(&exeInstall.step);
+	// const runCmd = exeInstall.run();
+	// const runStep = b.step("run", "Run the app");
+	// runStep.dependOn(&exeInstall.artifact);
 	
 	//https://ziglang.org/learn/build-system/
 	//https://ziglang.org/documentation/master/std/#std.Build

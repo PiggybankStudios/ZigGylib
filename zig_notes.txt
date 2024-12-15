@@ -17,6 +17,10 @@
 	[ ] The keyword "try" is a shortcut for "catch |err| return err;"
 	[ ] You can do "catch unreachable" to basically assert that no errors should occur
 	[ ] Format strings use '{' and '}' characters so they need to be doubled up to actually output them in the result like "{{" and "}}"
+	[ ] Custom test runner "https://www.openmymind.net/Using-A-Custom-Test-Runner-In-Zig/" - "https://gist.github.com/karlseguin/c6bea5b35e4e8d26af6f81c22cb5d76b"
+	[ ] Use "zig build run" to make the "run" step execute
+	[ ] Add "--summary all" to zig invocation to get a summary of the steps in the build graph
+	[ ] 
 	
 # Naming Conventions
 	[ ] Basic Types = u8, i32, f64, bool, etc.
