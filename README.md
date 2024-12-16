@@ -1,0 +1,2 @@
+# Zig Game
+This is my first attempt at making a little game in Zig. Mostly the consists of trying to get GLFW (or maybe some other framework) compiling with Zig so we can have a window with graphics (either in Vulkan or OpenGL)
